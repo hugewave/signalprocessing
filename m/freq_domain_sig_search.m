@@ -42,8 +42,11 @@ if search_num == 0
 end
 
 for m = 1 : search_num
-[bgp edp] = rslts(m,:);
-[mv,pos] = max(fftot[bgp edp]);
+   slts = rslts(m,:);
+   bgp = slts(1);
+   edp = slts(2);
+[mv,pos] = max(fftot(bgp:edp));
+pos = pos + bgp - 1;
 peak_2_avg = mv/avg_p;
 threshold_3db = mv/2;
     up = pos;
@@ -63,6 +66,7 @@ threshold_3db = mv/2;
     bw_3db = (up - down + 1)/fftlen*fs; 
     bw = bw_3db;
     fc = pos/fftlen*fs;
+    fc = round(fc /1e6) * (1e6);
     search_results = [search_results ;[fc bw peak_2_avg]];
 end
 end
