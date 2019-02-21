@@ -10,6 +10,9 @@ fseek(fid,bgp*2,'bof');
 fid_rslt = fopen('hopinfo.txt','w');
 while feof(fid) ~=1
    sig = fread(fid,siglen*2,'int16','l')'; 
+   if feof(fid)
+       break;
+   end
    search_results = freq_domain_sig_search(sig,fs,fftlen);
    if ~isempty(search_results)
    search_results = search_results(search_results(:,2)<1e6,:);
