@@ -1,8 +1,8 @@
 clear all;
 clc;
-fid = fopen('doublehop_200m_real.pcm','r','b');
-bgp = 131749;
-step = 125000;
+fid = fopen('1.pcm','r','b');
+bgp = 220195;
+step = 125000*6;
 siglen = 62500;
 fs = 200e6;
 fftlen = 1024;
