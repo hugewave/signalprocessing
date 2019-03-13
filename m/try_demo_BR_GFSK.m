@@ -11,12 +11,12 @@ rolloff = 0.4;
 h = rcosdesign(rolloff,span,sps);
 w = blackman(length(h));
 flt = h.*w';
-%load('flt.mat');
-%flt = flt(1:2:end);
+load('flt.mat');
+flt = flt(1:2:end);
 fid = fopen('E:\BaiduNetdiskDownload\反复配对.pcm','r','b');
 bursts_info = load('反复配对_wifi_flted.txt');
 len_threshold = 64*200;
-snr_threshold = 5;
+snr_threshold = 10;
 bursts_info(bursts_info(:,4) < len_threshold ,:) = [];
 bursts_info(bursts_info(:,5) < snr_threshold ,:) = [];
 %%% frqId   start  end  length   snr
@@ -33,7 +33,7 @@ for i = 1:size(bursts_info,1)
     
     
     frq = rela_freqsets(freq_id);
-    siglen = info(4) + 10000;
+    siglen = info(4) + 24000;
     fseek(fid,bgp*2,'bof');
     sig = fread(fid,siglen,'int16','l')'; 
     bd = func_ddc(sig,frq,fs,flt);
