@@ -17,10 +17,12 @@ fid = fopen('E:\BaiduNetdiskDownload\反复配对.pcm','r','b');
 bursts_info = load('反复配对_wifi_flted.txt');
 %%% frqId   start  end  length   snr
 %bursts_info = bursts_info(bursts_info(:,1) >= 73 | bursts_info(:,1) <= 22 ,:);
-bursts_info = bursts_info(bursts_info(:,4) > 400000,:);
-bursts_info = sortrows(bursts_info,2);
+len_threshold = 64*200;
+snr_threshold = 10;
+bursts_info(bursts_info(:,4) < len_threshold ,:) = [];
+bursts_info(bursts_info(:,5) < snr_threshold ,:) = [];
 fot = fopen('反复配对.dat','w','b');
-for i = 1:size(bursts_info,1)
+for i = 878:size(bursts_info,1)
     info = bursts_info(i,:);
     snr_eng = info(5);
     freq_id = info(1);

@@ -1,6 +1,6 @@
 clear all;
 clc;
-fid = fopen('E:\BaiduNetdiskDownload\反复配对.pcm','r','b');
+fid = fopen('D:\BaiduNetdiskDownload\反复配对.pcm','r','b');
 bgp = 0;
 steps = 1024;
 fs = 200e6;
@@ -17,7 +17,7 @@ wk_status = 1;
 abslt_pos = 1;
 rela_pos = 1;
 tmpbuf = zeros(79,round(blk_buf_size/steps)+200);
-fot = fopen('E:\BaiduNetdiskDownload\amp_反复配对.pcm','w','b');
+fot = fopen('D:\BaiduNetdiskDownload\amp_反复配对.pcm','w','b');
 while wk_status
     if feof(fid)
         break;

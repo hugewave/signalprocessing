@@ -15,10 +15,13 @@ c = c(1:2:end);
 c = reshape(c,N,24);
 
 display('processing...');
-fid = fopen('128M_cmplx.pcm','r','b');
+fid = fopen('bluetooth_testsig.pcm','r','b');
 sig = fread(fid,'int16','l')';
 fclose(fid);
 csig = sig(1:2:end) + 1j*sig(2:2:end);
 csiglen = floor(length(csig)/N)*N;
 x = csig(1:csiglen);
 y = channelization(c,x);
+%%
+plot(abs(y(41,:)));
+%%

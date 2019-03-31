@@ -7,7 +7,7 @@ f_info = fopen('反复配对.txt','w');
 
 channelid = 1;
 for channelid = 1:79
-    fid = fopen('E:\BaiduNetdiskDownload\amp_反复配对.pcm','r','b');
+    fid = fopen('D:\BaiduNetdiskDownload\amp_反复配对.pcm','r','b');
     fseek(fid,0,'bof');
     fot = fopen('single.pcm','w','b');
     while feof(fid) ~= 1
